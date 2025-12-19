@@ -1,64 +1,71 @@
-import { Mail, Phone, Linkedin, MapPin, Heart } from "lucide-react";
+import { Mail, Github, Linkedin, Twitter, Heart, ArrowUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+const socialLinks = [
+  { name: "GitHub", icon: Github, url: "https://github.com/tadrosmakram" },
+  { name: "LinkedIn", icon: Linkedin, url: "https://www.linkedin.com/in/tadros-makram/" },
+  { name: "Twitter", icon: Twitter, url: "https://twitter.com/tadrosmakram" },
+  { name: "Email", icon: Mail, url: "mailto:tadrwsm@gmail.com" },
+];
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <footer className="py-12 bg-foreground text-background no-print">
+    <footer className="py-12 bg-card border-t border-border relative no-print">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          {/* Brand */}
-          <div>
-            <h3 className="text-2xl font-display font-bold mb-4">Tadros Awad</h3>
-            <p className="text-background/70 text-sm">
-              Mechanical & BIM Engineer specializing in HVAC design for industrial, commercial, and data center projects.
-            </p>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
-            <nav className="flex flex-col gap-2 text-sm text-background/70">
-              <a href="#experience" className="hover:text-background transition-colors">Experience</a>
-              <a href="#skills" className="hover:text-background transition-colors">Skills</a>
-              <a href="#education" className="hover:text-background transition-colors">Education</a>
-              <a href="#interests" className="hover:text-background transition-colors">Interests</a>
-            </nav>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="font-semibold mb-4">Contact</h4>
-            <div className="flex flex-col gap-3 text-sm text-background/70">
-              <a href="mailto:tadrwsm@gmail.com" className="flex items-center gap-2 hover:text-background transition-colors">
-                <Mail className="w-4 h-4" />
-                tadrwsm@gmail.com
-              </a>
-              <a href="tel:+201272599987" className="flex items-center gap-2 hover:text-background transition-colors">
-                <Phone className="w-4 h-4" />
-                +20 127 259 9987
-              </a>
-              <span className="flex items-center gap-2">
-                <MapPin className="w-4 h-4" />
-                Cairo, Egypt
-              </span>
-              <a
-                href="https://www.linkedin.com/in/tadrosmakram/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 hover:text-background transition-colors"
-              >
-                <Linkedin className="w-4 h-4" />
-                LinkedIn Profile
-              </a>
-            </div>
-          </div>
+        {/* Back to top button */}
+        <div className="flex justify-center mb-8">
+          <Button
+            onClick={scrollToTop}
+            variant="outline"
+            size="icon"
+            className="rounded-full border-border hover:border-primary hover:text-primary"
+          >
+            <ArrowUp className="w-5 h-5" />
+          </Button>
         </div>
 
-        <div className="pt-8 border-t border-background/20 text-center text-sm text-background/60">
-          <p className="flex items-center justify-center gap-1">
-            © {currentYear} Tadros Awad. Built with <Heart className="w-4 h-4 text-destructive fill-destructive" />
+        <div className="text-center">
+          {/* Logo */}
+          <div className="flex justify-center mb-6">
+            <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center text-primary-foreground text-xl font-bold">
+              T
+            </div>
+          </div>
+
+          {/* Tagline */}
+          <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+            Building exceptional digital experiences with passion and precision.
           </p>
+
+          {/* Social Links */}
+          <div className="flex justify-center gap-4 mb-8">
+            {socialLinks.map((social) => (
+              <a
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-muted hover:bg-muted/80 rounded-full text-muted-foreground hover:text-foreground transition-all duration-300"
+                aria-label={social.name}
+              >
+                <social.icon className="w-5 h-5" />
+              </a>
+            ))}
+          </div>
+
+          {/* Copyright */}
+          <div className="pt-6 border-t border-border">
+            <p className="text-sm text-muted-foreground flex items-center justify-center gap-1">
+              © {currentYear} Tadros Makram. Built with{" "}
+              <Heart className="w-4 h-4 text-accent fill-accent" /> using React & Tailwind CSS
+            </p>
+          </div>
         </div>
       </div>
     </footer>

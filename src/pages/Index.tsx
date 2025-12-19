@@ -1,40 +1,53 @@
 import { useEffect } from "react";
 import Navigation from "@/components/portfolio/Navigation";
 import HeroSection from "@/components/portfolio/HeroSection";
-import ExperienceSection from "@/components/portfolio/ExperienceSection";
+import AboutSection from "@/components/portfolio/AboutSection";
 import ProjectsSection from "@/components/portfolio/ProjectsSection";
 import SkillsSection from "@/components/portfolio/SkillsSection";
-import EducationSection from "@/components/portfolio/EducationSection";
-import InterestsSection from "@/components/portfolio/InterestsSection";
+import ContactSection from "@/components/portfolio/ContactSection";
 import Footer from "@/components/portfolio/Footer";
+import { Toaster } from "sonner";
 
 const Index = () => {
   useEffect(() => {
     // Set document title and meta tags
-    document.title = "Tadros Awad | Mechanical & BIM Engineer - HVAC Design Expert";
+    document.title = "Tadros Makram | Frontend Developer - React, TypeScript, Tailwind CSS";
     
     // Update meta description
     const metaDescription = document.querySelector('meta[name="description"]');
+    const description = "Frontend Developer specializing in React, TypeScript, and Tailwind CSS. Building exceptional digital experiences with passion and precision.";
+    
     if (metaDescription) {
-      metaDescription.setAttribute("content", "Certified HVAC Designer (CHD) with 6+ years of experience in HVAC design and BIM across industrial, residential, commercial, and data-center projects.");
+      metaDescription.setAttribute("content", description);
     } else {
       const meta = document.createElement("meta");
       meta.name = "description";
-      meta.content = "Certified HVAC Designer (CHD) with 6+ years of experience in HVAC design and BIM across industrial, residential, commercial, and data-center projects.";
+      meta.content = description;
+      document.head.appendChild(meta);
+    }
+
+    // Add keywords meta tag
+    const metaKeywords = document.querySelector('meta[name="keywords"]');
+    const keywords = "frontend developer, react developer, typescript, tailwind css, web developer, portfolio, cairo, egypt";
+    
+    if (!metaKeywords) {
+      const meta = document.createElement("meta");
+      meta.name = "keywords";
+      meta.content = keywords;
       document.head.appendChild(meta);
     }
   }, []);
 
   return (
     <div className="min-h-screen bg-background">
+      <Toaster position="top-center" richColors />
       <Navigation />
       <main>
         <HeroSection />
-        <ExperienceSection />
+        <AboutSection />
         <ProjectsSection />
         <SkillsSection />
-        <EducationSection />
-        <InterestsSection />
+        <ContactSection />
       </main>
       <Footer />
     </div>
