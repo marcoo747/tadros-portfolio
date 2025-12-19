@@ -1,12 +1,5 @@
-import { Mail, Github, Linkedin, Twitter, Heart, ArrowUp } from "lucide-react";
+import { Mail, Linkedin, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const socialLinks = [
-  { name: "GitHub", icon: Github, url: "https://github.com/tadrosmakram" },
-  { name: "LinkedIn", icon: Linkedin, url: "https://www.linkedin.com/in/tadros-makram/" },
-  { name: "Twitter", icon: Twitter, url: "https://twitter.com/tadrosmakram" },
-  { name: "Email", icon: Mail, url: "mailto:tadrwsm@gmail.com" },
-];
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -16,55 +9,42 @@ const Footer = () => {
   };
 
   return (
-    <footer className="py-12 bg-card border-t border-border relative no-print">
+    <footer className="py-8 bg-card border-t border-border no-print">
       <div className="container mx-auto px-4">
-        {/* Back to top button */}
-        <div className="flex justify-center mb-8">
-          <Button
-            onClick={scrollToTop}
-            variant="outline"
-            size="icon"
-            className="rounded-full border-border hover:border-primary hover:text-primary"
-          >
-            <ArrowUp className="w-5 h-5" />
-          </Button>
-        </div>
+        <div className="max-w-5xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            {/* Copyright */}
+            <p className="text-sm text-muted-foreground">
+              © {currentYear} Tadros Awad. All rights reserved.
+            </p>
 
-        <div className="text-center">
-          {/* Logo */}
-          <div className="flex justify-center mb-6">
-            <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center text-primary-foreground text-xl font-bold">
-              T
-            </div>
-          </div>
-
-          {/* Tagline */}
-          <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-            Building exceptional digital experiences with passion and precision.
-          </p>
-
-          {/* Social Links */}
-          <div className="flex justify-center gap-4 mb-8">
-            {socialLinks.map((social) => (
+            {/* Links */}
+            <div className="flex items-center gap-4">
               <a
-                key={social.name}
-                href={social.url}
+                href="mailto:tadrwsm@gmail.com"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Email"
+              >
+                <Mail className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/tadros-makram/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 bg-muted hover:bg-muted/80 rounded-full text-muted-foreground hover:text-foreground transition-all duration-300"
-                aria-label={social.name}
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="LinkedIn"
               >
-                <social.icon className="w-5 h-5" />
+                <Linkedin className="w-5 h-5" />
               </a>
-            ))}
-          </div>
-
-          {/* Copyright */}
-          <div className="pt-6 border-t border-border">
-            <p className="text-sm text-muted-foreground flex items-center justify-center gap-1">
-              © {currentYear} Tadros Makram. Built with{" "}
-              <Heart className="w-4 h-4 text-accent fill-accent" /> using React & Tailwind CSS
-            </p>
+              <Button
+                onClick={scrollToTop}
+                variant="outline"
+                size="icon"
+                className="ml-4"
+              >
+                <ArrowUp className="w-4 h-4" />
+              </Button>
+            </div>
           </div>
         </div>
       </div>

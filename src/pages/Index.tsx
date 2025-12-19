@@ -2,20 +2,20 @@ import { useEffect } from "react";
 import Navigation from "@/components/portfolio/Navigation";
 import HeroSection from "@/components/portfolio/HeroSection";
 import AboutSection from "@/components/portfolio/AboutSection";
+import ExperienceSection from "@/components/portfolio/ExperienceSection";
 import ProjectsSection from "@/components/portfolio/ProjectsSection";
 import SkillsSection from "@/components/portfolio/SkillsSection";
+import CertificationsSection from "@/components/portfolio/CertificationsSection";
 import ContactSection from "@/components/portfolio/ContactSection";
 import Footer from "@/components/portfolio/Footer";
 import { Toaster } from "sonner";
 
 const Index = () => {
   useEffect(() => {
-    // Set document title and meta tags
-    document.title = "Tadros Makram | Frontend Developer - React, TypeScript, Tailwind CSS";
+    document.title = "Tadros Awad | Mechanical & BIM Engineer - HVAC Design Specialist";
     
-    // Update meta description
     const metaDescription = document.querySelector('meta[name="description"]');
-    const description = "Frontend Developer specializing in React, TypeScript, and Tailwind CSS. Building exceptional digital experiences with passion and precision.";
+    const description = "Mechanical & BIM Engineer with 6+ years experience in HVAC system design, BIM coordination, and MEP documentation. ASHRAE Certified HVAC Designer specializing in Data Centers and Industrial Facilities.";
     
     if (metaDescription) {
       metaDescription.setAttribute("content", description);
@@ -26,9 +26,8 @@ const Index = () => {
       document.head.appendChild(meta);
     }
 
-    // Add keywords meta tag
     const metaKeywords = document.querySelector('meta[name="keywords"]');
-    const keywords = "frontend developer, react developer, typescript, tailwind css, web developer, portfolio, cairo, egypt";
+    const keywords = "HVAC engineer, BIM coordinator, mechanical engineer, Revit MEP, data center HVAC, ASHRAE CHD, Cairo, Egypt, MEP design";
     
     if (!metaKeywords) {
       const meta = document.createElement("meta");
@@ -45,8 +44,10 @@ const Index = () => {
       <main>
         <HeroSection />
         <AboutSection />
+        <ExperienceSection />
         <ProjectsSection />
         <SkillsSection />
+        <CertificationsSection />
         <ContactSection />
       </main>
       <Footer />

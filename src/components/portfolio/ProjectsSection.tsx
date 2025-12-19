@@ -1,235 +1,148 @@
-import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
+import { Building, Factory, Server, Globe, Wrench } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 
 const projects = [
   {
-    title: "E-Commerce Dashboard",
-    description: "A comprehensive admin dashboard for managing products, orders, and customers. Features real-time analytics, inventory management, and responsive design.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop",
-    tags: ["React", "TypeScript", "Tailwind CSS", "Recharts"],
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: true,
+    title: "NEOM Data Center Complex",
+    type: "Data Center",
+    location: "NEOM, KSA",
+    icon: Server,
+    scope: "100MW IT Load Capacity, Tier IV Design",
+    description: "Lead HVAC designer for state-of-the-art data center with precision cooling systems, free cooling optimization, and N+1 redundancy architecture.",
+    tools: ["Revit MEP", "Navisworks", "Carrier HAP", "BIM 360"],
+    role: "Lead HVAC Design Engineer",
+    impact: "Achieved PUE target of 1.3 through innovative cooling strategies",
   },
   {
-    title: "Task Management App",
-    description: "A beautiful and intuitive task management application with drag-and-drop functionality, team collaboration features, and productivity tracking.",
-    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=500&fit=crop",
-    tags: ["React", "Redux", "Tailwind CSS", "DnD Kit"],
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: true,
+    title: "Industrial Manufacturing Complex",
+    type: "Industrial",
+    location: "6th of October, Egypt",
+    icon: Factory,
+    scope: "250,000 sqm Production Facility",
+    description: "Complete HVAC design for pharmaceutical manufacturing plant including cleanroom HVAC, process cooling, and central plant systems.",
+    tools: ["Revit MEP", "AutoCAD", "HAP", "Ductpipe Sizer"],
+    role: "MEP BIM Coordinator",
+    impact: "Delivered on schedule with zero critical coordination issues",
   },
   {
-    title: "Portfolio Website",
-    description: "A modern, responsive portfolio website showcasing projects and skills. Built with performance and accessibility as top priorities.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=500&fit=crop",
-    tags: ["React", "TypeScript", "Framer Motion", "Tailwind CSS"],
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: false,
+    title: "King Fahd Medical City Expansion",
+    type: "Healthcare",
+    location: "Riyadh, KSA",
+    icon: Building,
+    scope: "500-Bed Hospital Addition",
+    description: "HVAC systems for critical care units, operating theaters, and isolation rooms meeting ASHRAE 170 and local MOH requirements.",
+    tools: ["Revit MEP", "Carrier HAP", "Navisworks", "AutoCAD"],
+    role: "Senior HVAC Designer",
+    impact: "100% compliance with infection control ventilation standards",
   },
   {
-    title: "Weather Application",
-    description: "A sleek weather app with location-based forecasts, interactive maps, and beautiful visualizations of weather data.",
-    image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=800&h=500&fit=crop",
-    tags: ["React", "OpenWeather API", "Geolocation", "CSS3"],
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: false,
+    title: "Bahrain International Airport",
+    type: "Aviation",
+    location: "Muharraq, Bahrain",
+    icon: Globe,
+    scope: "New Terminal Building - 30,000 sqm",
+    description: "Airport terminal HVAC design with high-efficiency VAV systems, dedicated outdoor air systems, and smoke management.",
+    tools: ["Revit MEP", "HAP", "Navisworks", "CFD Analysis"],
+    role: "HVAC Design Engineer",
+    impact: "Exceeded energy efficiency targets by 12%",
   },
   {
-    title: "Social Media Dashboard",
-    description: "A unified dashboard for monitoring and managing multiple social media accounts with analytics and scheduling features.",
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=500&fit=crop",
-    tags: ["React", "Node.js", "MongoDB", "Chart.js"],
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: false,
+    title: "Cairo Business District Tower",
+    type: "Commercial",
+    location: "New Administrative Capital, Egypt",
+    icon: Building,
+    scope: "45-Story Mixed-Use Tower",
+    description: "High-rise HVAC design including central chiller plant, VRF systems, and building automation integration.",
+    tools: ["Revit MEP", "Carrier HAP", "Navisworks", "AutoCAD"],
+    role: "HVAC Design Engineer",
+    impact: "LEED Gold certification achieved",
   },
 ];
 
 const ProjectsSection = () => {
-  const featuredProjects = projects.filter(p => p.featured);
-  const otherProjects = projects.filter(p => !p.featured);
-
   return (
-    <section id="projects" className="py-24 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+    <section id="projects" className="section-padding bg-muted/30">
+      <div className="container mx-auto px-4">
+        <div className="max-w-5xl mx-auto">
+          {/* Section Header */}
+          <div className="mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+              Major Projects
+            </h2>
+            <div className="w-16 h-1 bg-primary rounded-full mb-4" />
+            <p className="text-muted-foreground">
+              Flagship engineering projects across data centers, industrial facilities, and international developments.
+            </p>
+          </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-secondary/10 rounded-full text-secondary text-sm font-medium mb-4">
-            My Work
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Featured <span className="text-gradient">Projects</span>
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            A selection of projects that showcase my skills and experience in building modern web applications
-          </p>
-        </div>
+          {/* Projects Grid */}
+          <div className="grid md:grid-cols-2 gap-6">
+            {projects.map((project, index) => {
+              const Icon = project.icon;
+              return (
+                <Card
+                  key={index}
+                  className="bg-card border-border hover:border-primary/50 transition-all duration-300 hover:shadow-card-hover overflow-hidden"
+                >
+                  <CardContent className="p-6">
+                    {/* Header */}
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="p-3 bg-primary/10 rounded-lg shrink-0">
+                        <Icon className="w-6 h-6 text-primary" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-semibold text-foreground text-lg leading-tight">
+                          {project.title}
+                        </h3>
+                        <div className="flex items-center gap-2 mt-1 text-sm text-muted-foreground">
+                          <Badge variant="secondary" className="text-xs">
+                            {project.type}
+                          </Badge>
+                          <span>•</span>
+                          <span>{project.location}</span>
+                        </div>
+                      </div>
+                    </div>
 
-        {/* Featured Projects */}
-        <div className="space-y-12 mb-16">
-          {featuredProjects.map((project, index) => (
-            <div
-              key={index}
-              className={`grid lg:grid-cols-2 gap-8 items-center ${
-                index % 2 === 1 ? "lg:flex-row-reverse" : ""
-              }`}
-            >
-              {/* Image */}
-              <div className={`relative group ${index % 2 === 1 ? "lg:order-2" : ""}`}>
-                <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-secondary/20 to-accent/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative overflow-hidden rounded-2xl shadow-lg">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-64 md:h-80 object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  {/* Overlay buttons */}
-                  <div className="absolute bottom-4 left-4 right-4 flex gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
-                    <Button
-                      size="sm"
-                      className="flex-1 bg-primary hover:bg-primary/90 gap-2"
-                      asChild
-                    >
-                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="w-4 h-4" />
-                        Live Demo
-                      </a>
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="flex-1 bg-card/90 backdrop-blur-sm gap-2"
-                      asChild
-                    >
-                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                        <Github className="w-4 h-4" />
-                        Code
-                      </a>
-                    </Button>
-                  </div>
-                </div>
-              </div>
+                    {/* Scope */}
+                    <p className="text-sm text-primary font-medium mb-3">
+                      {project.scope}
+                    </p>
 
-              {/* Content */}
-              <div className={`space-y-4 ${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                <div className="flex items-center gap-2">
-                  <Badge className="bg-primary/10 text-primary hover:bg-primary/20">
-                    Featured
-                  </Badge>
-                </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-foreground">
-                  {project.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, tagIndex) => (
-                    <Badge
-                      key={tagIndex}
-                      variant="secondary"
-                      className="bg-muted text-muted-foreground"
-                    >
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-                <div className="flex gap-4 pt-2">
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-primary hover:text-primary/80 font-medium transition-colors group"
-                  >
-                    View Project
-                    <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </a>
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-muted-foreground hover:text-foreground font-medium transition-colors"
-                  >
-                    <Github className="w-4 h-4" />
-                    Source Code
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+                    {/* Description */}
+                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                      {project.description}
+                    </p>
 
-        {/* Other Projects Grid */}
-        <h3 className="text-2xl font-bold text-foreground mb-8 text-center">
-          Other Projects
-        </h3>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {otherProjects.map((project, index) => (
-            <Card
-              key={index}
-              className="group overflow-hidden border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1"
-            >
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-                
-                {/* Quick links */}
-                <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 bg-card/90 backdrop-blur-sm rounded-full hover:bg-card transition-colors"
-                  >
-                    <Github className="w-4 h-4 text-foreground" />
-                  </a>
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 bg-card/90 backdrop-blur-sm rounded-full hover:bg-card transition-colors"
-                  >
-                    <ExternalLink className="w-4 h-4 text-foreground" />
-                  </a>
-                </div>
-              </div>
-              <CardContent className="p-6">
-                <h4 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                  {project.title}
-                </h4>
-                <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.slice(0, 3).map((tag, tagIndex) => (
-                    <Badge
-                      key={tagIndex}
-                      variant="secondary"
-                      className="bg-muted/50 text-muted-foreground text-xs"
-                    >
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                    {/* Tools */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tools.map((tool, i) => (
+                        <span
+                          key={i}
+                          className="text-xs bg-muted text-muted-foreground px-2 py-1 rounded"
+                        >
+                          {tool}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Role & Impact */}
+                    <div className="pt-4 border-t border-border space-y-2">
+                      <div className="flex items-center gap-2 text-sm">
+                        <Wrench className="w-4 h-4 text-primary" />
+                        <span className="text-muted-foreground">Role:</span>
+                        <span className="text-foreground font-medium">{project.role}</span>
+                      </div>
+                      <p className="text-sm text-primary/80 italic">
+                        "{project.impact}"
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
