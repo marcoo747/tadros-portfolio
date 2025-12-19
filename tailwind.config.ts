@@ -9,13 +9,13 @@ export default {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
+        "2xl": "1280px",
       },
     },
     extend: {
       fontFamily: {
-        sans: ['Outfit', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -51,13 +51,9 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        code: {
-          purple: "hsl(var(--code-purple))",
-          green: "hsl(var(--code-green))",
-          pink: "hsl(var(--code-pink))",
-          orange: "hsl(var(--code-orange))",
-          cyan: "hsl(var(--code-cyan))",
-        },
+        navy: "hsl(var(--navy))",
+        steel: "hsl(var(--steel))",
+        slate: "hsl(var(--slate))",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -77,31 +73,11 @@ export default {
           from: { opacity: "0" },
           to: { opacity: "1" },
         },
-        "slide-in-left": {
-          from: { transform: "translateX(-20px)", opacity: "0" },
-          to: { transform: "translateX(0)", opacity: "1" },
-        },
-        "slide-in-right": {
-          from: { transform: "translateX(20px)", opacity: "0" },
-          to: { transform: "translateX(0)", opacity: "1" },
-        },
-        "bounce-slow": {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
-        },
-        "glow": {
-          "0%, 100%": { opacity: "0.5" },
-          "50%": { opacity: "1" },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in": "fade-in 0.5s ease-out",
-        "slide-in-left": "slide-in-left 0.5s ease-out",
-        "slide-in-right": "slide-in-right 0.5s ease-out",
-        "bounce-slow": "bounce-slow 2s ease-in-out infinite",
-        "glow": "glow 2s ease-in-out infinite",
+        "fade-in": "fade-in 0.4s ease-out",
       },
     },
   },

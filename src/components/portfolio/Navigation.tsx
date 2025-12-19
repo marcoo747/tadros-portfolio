@@ -3,9 +3,11 @@ import { Menu, X, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
-  { href: "#about", label: "About" },
+  { href: "#about", label: "Summary" },
+  { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
   { href: "#skills", label: "Skills" },
+  { href: "#certifications", label: "Certifications" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -56,64 +58,50 @@ const Navigation = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 no-print ${
         isScrolled 
-          ? "bg-card/90 backdrop-blur-lg shadow-lg border-b border-border/50" 
+          ? "bg-card/95 backdrop-blur-sm shadow-sm border-b border-border" 
           : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <button
             onClick={scrollToTop}
-            className="font-bold text-xl text-foreground hover:text-primary transition-colors flex items-center gap-2"
+            className="font-semibold text-foreground hover:text-primary transition-colors"
           >
-            <span className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center text-primary-foreground text-sm font-bold">
-              T
-            </span>
-            <span className="hidden sm:inline">Tadros Makram</span>
+            Tadros Awad
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
             <Button
               variant="ghost"
               size="icon"
               onClick={toggleDarkMode}
-              className="rounded-full"
+              className="ml-2"
             >
-              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </Button>
-            <Button
-              onClick={() => {
-                const element = document.querySelector("#contact");
-                if (element) element.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground px-6"
-            >
-              Hire Me
+              {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center gap-2 md:hidden">
+          <div className="flex items-center gap-2 lg:hidden">
             <Button
               variant="ghost"
               size="icon"
               onClick={toggleDarkMode}
-              className="rounded-full"
             >
-              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </Button>
             <Button
               variant="ghost"
@@ -127,28 +115,18 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border animate-fade-in">
-            <div className="flex flex-col gap-4">
+          <div className="lg:hidden py-4 border-t border-border bg-card">
+            <div className="flex flex-col gap-2">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors py-2 px-2"
                   onClick={(e) => handleNavClick(e, link.href)}
                 >
                   {link.label}
                 </a>
               ))}
-              <Button
-                onClick={() => {
-                  const element = document.querySelector("#contact");
-                  if (element) element.scrollIntoView({ behavior: "smooth" });
-                  setIsMobileMenuOpen(false);
-                }}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground w-full mt-2"
-              >
-                Hire Me
-              </Button>
             </div>
           </div>
         )}
