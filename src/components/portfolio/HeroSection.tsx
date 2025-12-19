@@ -1,111 +1,145 @@
-import { Mail, Phone, MapPin, Linkedin, Download, FileText, ChevronDown } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail, ChevronDown, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import profilePhoto from "@/assets/profile-photo.jpg";
 
 const HeroSection = () => {
-  const handleExportPDF = () => {
-    window.print();
+  const scrollToContact = () => {
+    const element = document.querySelector("#contact");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
-  const handleDownloadCV = () => {
-    const link = document.createElement("a");
-    link.href = "/Tadros_Awad_CV.pdf";
-    link.download = "Tadros_Awad_CV.pdf";
-    link.click();
+  const scrollToProjects = () => {
+    const element = document.querySelector("#projects");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden blueprint-grid">
-      {/* Background decorations */}
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-float" />
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "-3s" }} />
+        {/* Gradient orbs */}
+        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-float" style={{ animationDelay: "-3s" }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-3xl animate-pulse-slow" />
+        
+        {/* Grid pattern */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{
+          backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
+                           linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
+          backgroundSize: '60px 60px'
+        }} />
       </div>
 
       <div className="container mx-auto px-4 py-20 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           {/* Profile Image */}
-          <div className="relative group">
-            <div className="absolute inset-0 bg-hero-gradient rounded-full blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
-            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-card shadow-card-hover">
+          <div className="relative group order-1 lg:order-2">
+            {/* Glow effect */}
+            <div className="absolute -inset-4 bg-gradient-to-r from-primary via-accent to-secondary rounded-full blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-700" />
+            
+            {/* Image container */}
+            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden ring-4 ring-card shadow-2xl">
               <img
                 src={profilePhoto}
-                alt="Tadros Awad - Mechanical & BIM Engineer"
+                alt="Tadros Makram - Frontend Developer"
                 className="w-full h-full object-cover"
               />
+              {/* Overlay gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
-            {/* Decorative ring */}
-            <div className="absolute -inset-4 border-2 border-dashed border-primary/30 rounded-full animate-spin" style={{ animationDuration: "20s" }} />
+            
+            {/* Floating badge */}
+            <div className="absolute -bottom-2 -right-2 bg-card glass-border px-4 py-2 rounded-full shadow-lg flex items-center gap-2">
+              <span className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
+              <span className="text-sm font-medium text-foreground">Available for work</span>
+            </div>
           </div>
 
           {/* Content */}
-          <div className="flex-1 text-center lg:text-left">
-            <p className="text-primary font-medium tracking-wider uppercase mb-2 animate-fade-in">
-              Mechanical & BIM Engineer
-            </p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mb-4 animate-slide-up">
-              Tadros Awad
+          <div className="flex-1 text-center lg:text-left order-2 lg:order-1">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6 animate-fade-in-up">
+              <Sparkles className="w-4 h-4 text-primary" />
+              <span className="text-sm font-medium text-primary">Frontend Developer</span>
+            </div>
+
+            {/* Headline */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground mb-4 animate-slide-up">
+              Hi, I'm{" "}
+              <span className="text-gradient">Tadros Makram</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8 animate-slide-up" style={{ animationDelay: "0.1s" }}>
-              Certified HVAC Designer (CHD) with 6+ years of hands-on experience in HVAC design and BIM across industrial, residential, commercial, and data-center projects.
+
+            {/* Subheadline */}
+            <p className="text-xl md:text-2xl text-muted-foreground mb-6 animate-slide-up" style={{ animationDelay: "0.1s" }}>
+              I build{" "}
+              <span className="text-foreground font-semibold">exceptional</span> digital experiences
             </p>
 
-            {/* Contact Info */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-8 animate-slide-up" style={{ animationDelay: "0.2s" }}>
-              <a
-                href="mailto:tadrwsm@gmail.com"
-                className="flex items-center gap-2 px-4 py-2 bg-card rounded-full shadow-card hover:shadow-card-hover transition-all duration-300 text-sm"
+            {/* Description */}
+            <p className="text-base md:text-lg text-muted-foreground max-w-xl mb-8 animate-slide-up leading-relaxed" style={{ animationDelay: "0.2s" }}>
+              Specializing in <span className="text-primary font-medium">React</span>,{" "}
+              <span className="text-secondary font-medium">TypeScript</span>, and{" "}
+              <span className="text-accent font-medium">Tailwind CSS</span> to create 
+              beautiful, responsive, and user-friendly web applications.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-10 animate-slide-up" style={{ animationDelay: "0.3s" }}>
+              <Button
+                onClick={scrollToContact}
+                size="lg"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2 px-8 py-6 text-base shadow-glow hover:shadow-glow transition-all duration-300 group"
               >
-                <Mail className="w-4 h-4 text-primary" />
-                <span className="text-foreground">tadrwsm@gmail.com</span>
-              </a>
-              <a
-                href="tel:+201272599987"
-                className="flex items-center gap-2 px-4 py-2 bg-card rounded-full shadow-card hover:shadow-card-hover transition-all duration-300 text-sm"
+                Let's Talk
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+              <Button
+                onClick={scrollToProjects}
+                variant="outline"
+                size="lg"
+                className="border-2 border-border hover:border-primary text-foreground hover:text-primary gap-2 px-8 py-6 text-base transition-all duration-300"
               >
-                <Phone className="w-4 h-4 text-primary" />
-                <span className="text-foreground">+20 127 259 9987</span>
+                View Projects
+              </Button>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex justify-center lg:justify-start gap-4 animate-slide-up" style={{ animationDelay: "0.4s" }}>
+              <a
+                href="https://github.com/tadrosmakram"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-card hover:bg-muted rounded-full shadow-card hover:shadow-card-hover transition-all duration-300 group"
+              >
+                <Github className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
               </a>
-              <span className="flex items-center gap-2 px-4 py-2 bg-card rounded-full shadow-card text-sm">
-                <MapPin className="w-4 h-4 text-primary" />
-                <span className="text-foreground">Cairo, Egypt</span>
-              </span>
               <a
                 href="https://www.linkedin.com/in/tadros-makram/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 bg-card rounded-full shadow-card hover:shadow-card-hover transition-all duration-300 text-sm"
+                className="p-3 bg-card hover:bg-muted rounded-full shadow-card hover:shadow-card-hover transition-all duration-300 group"
               >
-                <Linkedin className="w-4 h-4 text-primary" />
-                <span className="text-foreground">LinkedIn</span>
+                <Linkedin className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
               </a>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-4 animate-slide-up no-print" style={{ animationDelay: "0.3s" }}>
-              <Button
-                onClick={handleExportPDF}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2 px-6 py-3 text-base shadow-card hover:shadow-glow transition-all duration-300"
+              <a
+                href="mailto:tadrwsm@gmail.com"
+                className="p-3 bg-card hover:bg-muted rounded-full shadow-card hover:shadow-card-hover transition-all duration-300 group"
               >
-                <FileText className="w-5 h-5" />
-                Export to PDF
-              </Button>
-              <Button
-                onClick={handleDownloadCV}
-                variant="outline"
-                className="border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground gap-2 px-6 py-3 text-base shadow-card hover:shadow-card-hover transition-all duration-300"
-              >
-                <Download className="w-5 h-5" />
-                Download CV
-              </Button>
+                <Mail className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
+              </a>
             </div>
           </div>
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce no-print">
-        <ChevronDown className="w-8 h-8 text-primary/70" />
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 no-print">
+        <span className="text-xs text-muted-foreground uppercase tracking-widest">Scroll</span>
+        <ChevronDown className="w-6 h-6 text-primary animate-bounce-slow" />
       </div>
     </section>
   );
