@@ -1,19 +1,22 @@
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
-  { href: "#experience", label: "Experience" },
-  { href: "#projects", label: "Projects" },
-  { href: "#skills", label: "Skills" },
-  { href: "#education", label: "Education" },
-  { href: "#interests", label: "Interests" },
+  { href: "#", label: "Home", id: "home" },
+  { href: "#projects", label: "Projects", id: "projects" },
+  { href: "#skills", label: "Skills", id: "skills" },
+  { href: "#education", label: "Education", id: "education" },
+  { href: "#contact", label: "Contact", id: "contact" },
 ];
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,12 +42,31 @@ const Navigation = () => {
     localStorage.setItem("theme", newIsDark ? "dark" : "light");
   };
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, isHome: boolean) => {
     e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    
+    // If we're not on home page and not clicking home, navigate to home first
+    if (!isHome && location.pathname !== "/") {
+      navigate("/");
+      // Give it a moment to render, then scroll
+      setTimeout(() => {
+        if (href !== "#") {
+          const element = document.querySelector(href);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }
+      }, 100);
+    } else if (href !== "#") {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    } else if (isHome) {
+      navigate("/");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
+    
     setIsMobileMenuOpen(false);
   };
 
@@ -72,9 +94,9 @@ const Navigation = () => {
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
-                key={link.href}
+                key={link.id}
                 href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
+                onClick={(e) => handleNavClick(e, link.href, link.id === "home")}
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
               >
                 {link.label}
@@ -116,10 +138,10 @@ const Navigation = () => {
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
-                  key={link.href}
+                  key={link.id}
                   href={link.href}
                   className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                  onClick={(e) => handleNavClick(e, link.href)}
+                  onClick={(e) => handleNavClick(e, link.href, link.id === "home")}
                 >
                   {link.label}
                 </a>

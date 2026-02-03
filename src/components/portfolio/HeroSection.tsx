@@ -1,17 +1,21 @@
-import { Mail, Phone, MapPin, Linkedin, Download, FileText, ChevronDown } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Download, FileText, ChevronDown, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import profilePhoto from "@/assets/profile-photo.jpg";
 
 const HeroSection = () => {
-  const handleExportPDF = () => {
-    window.print();
-  };
-
   const handleDownloadCV = () => {
     const link = document.createElement("a");
     link.href = "/Tadros_Awad_CV.pdf";
     link.download = "Tadros_Awad_CV.pdf";
     link.click();
+  };
+
+  const handleContactClick = () => {
+    const element = document.querySelector("#contact");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   return (
@@ -40,63 +44,66 @@ const HeroSection = () => {
 
           {/* Content */}
           <div className="flex-1 text-center lg:text-left">
-            <p className="text-primary font-medium tracking-wider uppercase mb-2 animate-fade-in">
-              Mechanical & BIM Engineer
-            </p>
+            <div className="mb-4 flex justify-center lg:justify-start gap-2 flex-wrap animate-fade-in">
+              <Badge variant="outline" className="bg-primary/10 text-primary border-primary/30 px-3 py-1">
+                <Award className="w-3 h-3 mr-1" />
+                CHD (ASHRAE) Certified
+              </Badge>
+              <Badge variant="outline" className="bg-primary/10 text-primary border-primary/30 px-3 py-1">
+                6+ Years HVAC & BIM
+              </Badge>
+              <Badge variant="outline" className="bg-primary/10 text-primary border-primary/30 px-3 py-1">
+                LOD 400–500 / Clash Coordination
+              </Badge>
+            </div>
+            
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mb-4 animate-slide-up">
-              Tadros Awad
+              HVAC & BIM Engineer
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8 animate-slide-up" style={{ animationDelay: "0.1s" }}>
-              Certified HVAC Designer (CHD) with 6+ years of hands-on experience in HVAC design and BIM across industrial, residential, commercial, and data-center projects.
+            
+            <p className="text-lg md:text-xl text-foreground mb-3 animate-slide-up" style={{ animationDelay: "0.1s" }}>
+              Delivering code-compliant, high-performance systems for industrial & data-center projects.
+            </p>
+            
+            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mb-8 animate-slide-up" style={{ animationDelay: "0.15s" }}>
+              6+ years in HVAC design, Revit high-LOD modeling, coordination, energy audits, and value engineering to optimize cost and performance.
             </p>
 
             {/* Contact Info */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-8 animate-slide-up" style={{ animationDelay: "0.2s" }}>
+            <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-8 animate-slide-up text-sm" style={{ animationDelay: "0.2s" }}>
               <a
                 href="mailto:tadrwsm@gmail.com"
-                className="flex items-center gap-2 px-4 py-2 bg-card rounded-full shadow-card hover:shadow-card-hover transition-all duration-300 text-sm"
+                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
               >
-                <Mail className="w-4 h-4 text-primary" />
-                <span className="text-foreground">tadrwsm@gmail.com</span>
+                <Mail className="w-4 h-4" />
+                tadrwsm@gmail.com
               </a>
+              <span className="text-muted-foreground">•</span>
               <a
                 href="tel:+201272599987"
-                className="flex items-center gap-2 px-4 py-2 bg-card rounded-full shadow-card hover:shadow-card-hover transition-all duration-300 text-sm"
+                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
               >
-                <Phone className="w-4 h-4 text-primary" />
-                <span className="text-foreground">+20 127 259 9987</span>
-              </a>
-              <span className="flex items-center gap-2 px-4 py-2 bg-card rounded-full shadow-card text-sm">
-                <MapPin className="w-4 h-4 text-primary" />
-                <span className="text-foreground">Cairo, Egypt</span>
-              </span>
-              <a
-                href="https://www.linkedin.com/in/tadros-makram/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 bg-card rounded-full shadow-card hover:shadow-card-hover transition-all duration-300 text-sm"
-              >
-                <Linkedin className="w-4 h-4 text-primary" />
-                <span className="text-foreground">LinkedIn</span>
+                <Phone className="w-4 h-4" />
+                +20 127 259 9987
               </a>
             </div>
 
             {/* Action Buttons */}
             <div className="flex flex-wrap justify-center lg:justify-start gap-4 animate-slide-up no-print" style={{ animationDelay: "0.3s" }}>
               <Button
-                onClick={handleExportPDF}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2 px-6 py-3 text-base shadow-card hover:shadow-glow transition-all duration-300"
-              >
-                <FileText className="w-5 h-5" />
-                Export to PDF
-              </Button>
-              <Button
                 onClick={handleDownloadCV}
-                variant="outline"
-                className="border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground gap-2 px-6 py-3 text-base shadow-card hover:shadow-card-hover transition-all duration-300"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2 px-6 py-3 text-base shadow-card hover:shadow-glow transition-all duration-300"
               >
                 <Download className="w-5 h-5" />
                 Download CV
+              </Button>
+              <Button
+                onClick={handleContactClick}
+                variant="outline"
+                className="border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground gap-2 px-6 py-3 text-base shadow-card hover:shadow-card-hover transition-all duration-300"
+              >
+                <Mail className="w-5 h-5" />
+                Get in Touch
               </Button>
             </div>
           </div>
